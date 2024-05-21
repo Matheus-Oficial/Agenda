@@ -1,36 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda Telefônica Estilizada</title>
-    <!-- Link para o CSS do Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Link para ícones do Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href=" {% static '/style/foto.css'%}">
-</head>
-
-<body>
-    <div class="container my-4">
-        <!-- Menu -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded-3 shadow">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Agenda Telefônica</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        <a class="nav-link" href="#">Adicionar Contato</a>
-                        <a class="nav-link" href="#">Perfil</a>
-                        <a class="nav-link" href="#">Sair</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
+{% extends 'contatos/base.html' %}
+{% block content %}
+<div class="container my-4">
+    {%include 'contatos/partials/_nav.html'%}
     <div class="mt-3"></div>
     
         <!-- Campo de pesquisa -->
@@ -46,56 +17,22 @@
         <!-- Lista de contatos -->
 
         <ul class="list-group shadow mt-3">
+            {%if conts %}
+            {% for info in conts%}
             <li class="list-group-item d-flex align-items-center mb-2">
-						    <img cla src="https://medias.itatiaia.com.br/dims4/default/df778ad/2147483647/strip/true/crop/1199x675+1+0/resize/1000x563!/quality/90/?url=https%3A%2F%2Fk2-prod-radio-itatiaia.s3.us-east-1.amazonaws.com%2Fbrightspot%2F43%2Fbe%2F8c2f4dc0e056ba8ba0f3a12a1657%2Famigo-de-chico-moeda9d4c3677-29ef-4fd8-b1dd-73fc9cfe9f82.jpg" class="rounded-circle me-3 imgContato" alt="Foto de Chico moedas">
-						    <div class="flex-grow-1">
-						        <a href="{% url 'contato' %}" class="text-decoration-none">Chico moedas</a>
-						    </div>
-						    <span>
-						        <i class="bi bi-pencil-square text-primary" style="cursor:pointer;"></i>
-						        <i class="bi bi-trash-fill text-danger ms-2" style="cursor:pointer;"></i>
-						    </span>
-						</li>
-            <li class="list-group-item d-flex align-items-center mb-2">
-						    <img src="https://midias.correiobraziliense.com.br/_midias/jpg/2023/05/13/1200x800/1_luisa_sonza_1_1024x781-28008261.jpg?20230513183127?20230513183127https://via.placeholder.com/50" class="rounded-circle me-3 imgContato" alt="Foto de luiza sonza">
-						    <div class="flex-grow-1">
-						        <a href="{% url 'contato' %}" class="text-decoration-none">luiza sonza</a>
-						    </div>
-						    <span>
-						        <i class="bi bi-pencil-square text-primary" style="cursor:pointer;"></i>
-						        <i class="bi bi-trash-fill text-danger ms-2" style="cursor:pointer;"></i>
-						    </span>
-						</li>
-           <li class="list-group-item d-flex align-items-center mb-2">
-						    <img src="https://cdn.atarde.com.br/img/Artigo-Destaque/1260000/1200x0/Em-show-Belo-muda-refrao-de-musica-para-fiquei-sol0126815200202404281359-ScaleDownProportional.webp?fallback=https%3A%2F%2Fcdn.atarde.com.br%2Fimg%2FArtigo-Destaque%2F1260000%2FEm-show-Belo-muda-refrao-de-musica-para-fiquei-sol0126815200202404281359.jpg%3Fxid%3D6198034%26resize%3D1000%252C500%26t%3D1714778752&xid=6198034" class="rounded-circle me-3 imgContato" alt="Foto de Belo">
-						    <div class="flex-grow-1">
-						        <a href="{% url 'contato' %}" class="text-decoration-none">Belo</a>
-						    </div>
-						    <span>
-						        <i class="bi bi-pencil-square text-primary" style="cursor:pointer;"></i>
-						        <i class="bi bi-trash-fill text-danger ms-2" style="cursor:pointer;"></i>
-						    </span>
-						</li>
-           <li class="list-group-item d-flex align-items-center mb-2">
-						    <img src="https://conteudo.imguol.com.br/c/entretenimento/86/2023/08/08/a-influenciadora-fitness-gracyanne-barbosa-1691545370386_v2_1x1.jpg" class="rounded-circle me-3 imgContato" alt="Foto de Gracyanne Barbosa">
-						    <div class="flex-grow-1">
-						        <a href="{% url 'contato' %}" class="text-decoration-none">Gracyanne Barbosa</a>
-						    </div>
-						    <span>
-						        <i class="bi bi-pencil-square text-primary" style="cursor:pointer;"></i>
-						        <i class="bi bi-trash-fill text-danger ms-2" style="cursor:pointer;"></i>
-						    </span>
-						</li>
-            <li class="list-group-item d-flex align-items-center mb-2">
-						    <img src="https://p2.trrsf.com/image/fget/cf/1200/1200/middle/images.terra.com/2024/04/19/49165024-gilson-red.jpg" class="rounded-circle me-3 imgContato" alt="Foto de Gilson">
-						    <div class="flex-grow-1">
-						        <a href="{% url 'contato' %}" class="text-decoration-none">Gilson</a>
-						    </div>
-						    <span>
-						        <i class="bi bi-pencil-square text-primary" style="cursor:pointer;"></i>
-						        <i class="bi bi-trash-fill text-danger ms-2" style="cursor:pointer;"></i>
-						    </span>
-						</li>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-z_c2AkyhAvRSZpywjUwYA_Q0IKSYSLontTNP-a9fEw&s" 
+                class="rounded-circle me-3 imgContato" alt="Foto de usuario">
+                <div class="flex-grow-1">
+                    <a href="{% url 'contato' info.id %}" class="text-decoration-none">{{info.nome}}</a>
+                </div>
+                <span>
+                    <i class="bi bi-pencil-square text-primary" style="cursor:pointer;"></i>
+                    <i class="bi bi-trash-fill text-danger ms-2" style="cursor:pointer;"></i>
+                </span>
+            </li>
+            {% endfor %}
+            {% else %}
+            {% endif %}
             <!-- Repita o formato do item acima para cada contato -->
         </ul>
         
@@ -104,7 +41,7 @@
     <!-- JavaScript para filtrar contatos -->
 
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<!-- Bootstrap Bundle with Popper -->
+{% include 'contatos/partials/_footer.html' %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+{%endblock%}
